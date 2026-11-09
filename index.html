@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hers Cafe | Garden East, Karachi</title>
+<style>
+:root{
+  --bg:#eef0ea;--surface:#fff;--ink:#1d2b24;--muted:#5a6a61;--line:#cfd6cc;--ember:#c2410c;--ember-ink:#fff;--hero:#1d2b24;--hero-ink:#f6efe4;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101613;--surface:#18211c;--ink:#f1ece2;--muted:#a3b0a7;--line:#2c3a32;--ember:#f97316;--ember-ink:#1a0e05;--hero:#0a0f0c;--hero-ink:#f6efe4}}
+:root[data-theme="dark"]{--bg:#101613;--surface:#18211c;--ink:#f1ece2;--muted:#a3b0a7;--line:#2c3a32;--ember:#f97316;--ember-ink:#1a0e05;--hero:#0a0f0c;--hero-ink:#f6efe4}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+.hero{background:var(--hero);color:var(--hero-ink);padding:44px 20px 36px;border-bottom:6px solid var(--ember)}
+.wrap{max-width:680px;margin:0 auto}
+h1{font:700 clamp(2.6rem,12vw,4.2rem)/1 Georgia,"Times New Roman",serif;margin:0 0 10px;letter-spacing:-.01em}
+.tag{margin:0 0 18px;opacity:.85;max-width:38ch}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:600;margin-bottom:20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#888}
+.open .dot{background:#4ade80}.closed .dot{background:#f87171}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+a.btn{display:inline-block;padding:13px 20px;border-radius:8px;font-weight:700;text-decoration:none;background:var(--ember);color:var(--ember-ink);min-height:46px}
+a.btn.alt{background:transparent;color:var(--hero-ink);border:1px solid #ffffff55}
+a.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+section{padding:30px 20px;border-bottom:1px solid var(--line)}
+h2{font:700 1.5rem/1.2 Georgia,serif;margin:0 0 14px}
+ul.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.facts li{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ember);border-radius:6px;padding:12px 14px}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+td{padding:11px 14px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+td:last-child{text-align:right;color:var(--muted)}
+tr.today td{font-weight:700;color:var(--ink);background:color-mix(in srgb,var(--ember) 14%,transparent)}
+p{margin:0 0 12px;max-width:60ch}
+.muted{color:var(--muted)}
+footer{padding:24px 20px 40px;color:var(--muted);font-size:.85rem}
+label{display:block;font-weight:600;margin:14px 0 4px}
+input{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+input:focus-visible,button:focus-visible{outline:3px solid var(--ember);outline-offset:1px}
+h3{font:700 1.05rem/1.2 Georgia,serif;margin:18px 0 8px}
+.item{display:grid;grid-template-columns:1fr 44px 36px 44px;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid var(--line)}
+.item button{min-height:44px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;font-size:1.2rem;font-weight:700;font-family:inherit;cursor:pointer}
+.item b{text-align:center}
+.preview{white-space:pre-wrap;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;font:14px/1.5 ui-monospace,Menlo,monospace;margin:16px 0}
+button.btn{border:0;font:inherit;font-weight:700;cursor:pointer;padding:13px 20px;border-radius:8px;min-height:46px;background:var(--ember);color:var(--ember-ink)}
+button.alt2{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button.btn:disabled{opacity:.45;cursor:not-allowed}
+a.btn[aria-disabled='true']{opacity:.45;pointer-events:none}
+.qrgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:16px}
+.qrcard{background:#fff;color:#000;padding:10px;text-align:center;border-radius:6px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<h1>Hers Cafe</h1>
+<p class="tag">Coffee, small plates and late-night meals in Garden East, open until the early hours.</p>
+<div id="status" class="status"><span class="dot"></span><span id="stext">Checking hours…</span></div>
+<div class="btns" id="btns"></div>
+</div></header>
+
+<section><div class="wrap">
+<h2>What to expect</h2>
+<ul class="facts">
+<li>Air-conditioned hall with a fireplace, plus outdoor seating</li>
+<li>Family-friendly, good for groups and kids</li>
+<li>Free Wi-Fi and board games like Ludo</li>
+<li>Free street parking</li>
+<li>Payment is cash only</li>
+<li>Busiest on Friday nights</li>
+</ul>
+</div></section>
+
+<section><div class="wrap">
+<h2>On the menu</h2>
+<p>Premium coffee and tea, burgers and fries, organic dishes, small plates, happy hour food and late-night meals. Prices and the full menu are best confirmed with the café.</p>
+<p class="muted">Rated 4.6 out of 5 on Google Maps (40 reviews).</p>
+</div></section>
+
+<section><div class="wrap">
+<h2>Opening hours</h2>
+<table id="hours"></table>
+</div></section>
+
+<section><div class="wrap">
+<h2>Find us</h2>
+<p>Shop 2/1, Plot 79/1-1-3, Bano Plaza, Main Lasbela Road, Garden East, Soldier Bazaar, Karachi 74800</p>
+<div class="btns"><a class="btn" href="https://maps.google.com/maps?cid=14541701343045528122" target="_blank" rel="noopener">Open in Google Maps</a></div>
+</div></section>
+
+<section id='order'><div class='wrap'>
+<h2>Order from your table</h2>
+<p class='muted'>Pick your items and send the order to the waiter on WhatsApp. No app needed.</p>
+<label for='tableNo'>Table number</label>
+<input id='tableNo' inputmode='numeric' maxlength='3' placeholder='e.g. 5'>
+<div id='menuList'></div>
+<label for='note'>Note for the kitchen (optional)</label>
+<input id='note' maxlength='140' placeholder='Less sugar, no onions'>
+<pre id='preview' class='preview'></pre>
+<div class='btns'><a id='send' class='btn' href='#order' aria-disabled='true'>Send to waiter on WhatsApp</a><button id='copyOrder' type='button' class='btn alt2'>Copy order</button></div>
+<p id='ostatus' class='muted' role='status'></p>
+</div></section>
+<section id='qrSec' hidden><div class='wrap'>
+<h2>Table QR codes (owner)</h2>
+<p class='muted'>Each code opens the order form with that table number filled in. Print them and place one on each table.</p>
+<label for='baseUrl'>Page link</label><input id='baseUrl'>
+<label for='nTables'>Number of tables</label><input id='nTables' inputmode='numeric' value='10'>
+<div class='btns' style='margin-top:14px'><button id='mkqr' type='button' class='btn'>Make QR codes</button></div>
+<div id='qrGrid' class='qrgrid'></div>
+</div></section>
+<footer><div class="wrap">Sample website draft. Details come from the café’s public Google Maps listing. Menu, prices and contact number to be confirmed with the owner.</div></footer>
+
+<script>
+(function(){
+  // Add the café's real number here (digits only, with country code), e.g. "923001234567"
+  var PHONE="";
+  var days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  // open hour 18:00; close hour next day: 3 (4 on Saturday)
+  var close={0:3,1:3,2:3,3:3,4:3,5:3,6:4};
+  var btns=document.getElementById("btns");
+  var maps='<a class="btn" href="https://maps.google.com/maps?cid=14541701343045528122" target="_blank" rel="noopener">Get directions</a>';
+  btns.innerHTML=PHONE?('<a class="btn" href="https://wa.me/'+PHONE+'">WhatsApp us</a><a class="btn alt" href="tel:+'+PHONE+'">Call</a>'+maps.replace('btn"','btn alt"')):maps;
+  var now=new Date();
+  var p=new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Karachi",weekday:"long",hour:"numeric",hour12:false}).formatToParts(now);
+  var wd=p.find(function(x){return x.type==="weekday"}).value;
+  var hr=parseInt(p.find(function(x){return x.type==="hour"}).value,10)%24;
+  var di=days.indexOf(wd),prev=(di+6)%7;
+  var open=(hr>=18)||(hr<close[prev]);
+  var st=document.getElementById("status");
+  st.className="status "+(open?"open":"closed");
+  document.getElementById("stext").textContent=open?"Open now":"Closed now. Opens at 6 PM";
+  var rows="";
+  days.forEach(function(d,i){
+    var c=close[i]===4?"4 AM":"3 AM";
+    rows+='<tr'+(i===di?' class="today"':'')+'><td>'+d+'</td><td>6 PM – '+c+'</td></tr>';
+  });
+  document.getElementById("hours").innerHTML=rows;
+})();
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'></script>
+<script>
+(function(){
+// Waiter/cashier WhatsApp number, digits only with country code, e.g. 923001234567
+var ORDER_PHONE='923222527360';
+var NL=String.fromCharCode(10);
+var MENU=[{c:'Coffee',i:['Latte','Cappuccino','Americano','Cold Coffee']},{c:'Tea',i:['Karak Chai','Green Tea']},{c:'Food',i:['Chicken Burger','Club Sandwich','Pasta','Fries','Chicken Wrap']}];
+var qty={},els={};
+var $=function(id){return document.getElementById(id)};
+var list=$('menuList'),tIn=$('tableNo'),note=$('note'),prev=$('preview'),send=$('send'),copy=$('copyOrder'),os=$('ostatus');
+function msg(){var ls=Object.keys(qty).filter(function(k){return qty[k]>0}).map(function(k){return qty[k]+' x '+k});
+ if(!ls.length)return '';
+ var n=note.value.trim();
+ return 'New order'+NL+'Table: '+(tIn.value.trim()||'?')+NL+ls.join(NL)+(n?NL+'Note: '+n:'');}
+function upd(){var m=msg(),ok=m&&tIn.value.trim();
+ prev.textContent=m||'Pick items to build your order.';
+ var live=ok&&ORDER_PHONE;
+ send.setAttribute('aria-disabled',live?'false':'true');
+ send.href=live?'https://wa.me/'+ORDER_PHONE+'?text='+encodeURIComponent(m):'#order';
+ send.target=live?'_blank':'';
+ copy.disabled=!ok;
+ os.textContent=!ORDER_PHONE?'The café has not set its WhatsApp number yet. Use Copy order and show it to the waiter.':(!tIn.value.trim()?'Enter your table number.':'');}
+function step(n,d){qty[n]=Math.max(0,(qty[n]||0)+d);els[n].textContent=qty[n];upd();}
+function mk(t,n,d){var b=document.createElement('button');b.type='button';b.textContent=t;b.setAttribute('aria-label',(d>0?'Add ':'Remove ')+n);b.onclick=function(){step(n,d)};return b;}
+MENU.forEach(function(g){var h=document.createElement('h3');h.textContent=g.c;list.appendChild(h);
+ g.i.forEach(function(n){var r=document.createElement('div');r.className='item';var s=document.createElement('span');s.textContent=n;var q=document.createElement('b');q.textContent='0';els[n]=q;r.append(s,mk('-',n,-1),q,mk('+',n,1));list.appendChild(r);});});
+tIn.oninput=upd;note.oninput=upd;
+copy.onclick=function(){var m=msg();var ta=document.createElement('textarea');ta.value=m;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(ta);os.textContent=ok?'Order copied.':'Copy failed. Select the order text above.';};
+function makeQr(){var n=Math.min(40,Math.max(1,parseInt($('nTables').value,10)||10));var box=$('qrGrid');box.textContent='';
+ if(typeof QRCode==='undefined'){box.textContent='The QR library did not load.';return;}
+ var base=$('baseUrl').value.trim().split('#')[0];
+ for(var i=1;i<=n;i++){var c=document.createElement('div');c.className='qrcard';var d=document.createElement('div');c.appendChild(d);var l=document.createElement('b');l.textContent='Table '+i;c.appendChild(l);box.appendChild(c);new QRCode(d,{text:base+'#t'+i,width:140,height:140});}}
+$('mkqr').onclick=makeQr;
+function route(){var h=location.hash,m=/^#t([0-9]{1,3})$/.exec(h);
+ if(m){tIn.value=m[1];upd();$('order').scrollIntoView();}
+ $('qrSec').hidden=h!=='#qr';
+ if(h==='#qr'){$('baseUrl').value=location.href.split('#')[0];}}
+window.addEventListener('hashchange',route);route();upd();
+})();
+</script>
+</body>
+</html>
